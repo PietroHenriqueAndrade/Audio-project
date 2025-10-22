@@ -1,86 +1,151 @@
+/* Importa a fonte Montserrat do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
-  font-size: 1.2rem;
-  background-image: linear-gradient(
-    to bottom,
-    hsl(141deg 75% 15%),
-    hsl(141deg 75% 5%)
-  );
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  color: #ffffff;
+    font-family: "Montserrat", sans-serif;
+    background-image: linear-gradient(to bottom, #1e3a3a, #101e1e);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #e0e0e0;
 }
 
 .container-aplicativo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 380px;
 }
 
-button {
-  background-color: inherit;
-  color: inherit;
-  border: none;
-  cursor: pointer;
+#capa {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    /* NOVO: TRANSIÇÃO SUAVE */
+    transition: all 0.5s ease-in-out;
 }
 
-.music-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Efeito sutil ao passar o mouse na capa */
+#capa:hover {
+    transform: scale(1.02);
 }
 
 #informacoes-faixa {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 2rem 0 1rem 0;
+    text-align: center;
+    width: 100%;
 }
 
 #capitulo {
-  font-size: 1.4rem;
-  font-weight: bold;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: #ffffff;
+}
+
+#nome-autor {
+    font-size: 1rem;
+    color: #b3b3b3;
+}
+
+#progress-container {
+    background-color: #444;
+    width: 100%;
+    height: 6px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 2rem 0 0.5rem 0;
+}
+
+#progress-bar {
+    background-color: #1DB954;
+    width: 0%;
+    height: 100%;
+    border-radius: 5px;
+    transition: width 0.1s linear;
+}
+
+#tempo-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #b3b3b3;
+    margin-bottom: 1.5rem;
+}
+
+#container-botoes {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 #play-pause,
 #anterior,
 #proximo {
-  cursor: pointer;
+    cursor: pointer;
+    fill: #e0e0e0;
+    transition: transform 0.2s ease-in-out, fill 0.2s;
 }
 
-#anterior,
-#proximo {
-  width: 40px;
+#play-pause:hover,
+#anterior:hover,
+#proximo:hover {
+    transform: scale(1.1);
+    fill: #ffffff;
 }
 
-#play-pause {
-  width: 60px;
+#anterior, #proximo { width: 40px; }
+#play-pause { width: 60px; }
+.pause { display: none; }
+.tocando .play { display: none; }
+.tocando .pause { display: block; }
+
+/* ESTILOS DO CONTROLE DE VOLUME */
+#volume-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 1.5rem;
 }
 
-.pause {
-  display: none;
+#volume-container svg {
+    width: 24px;
+    stroke: #b3b3b3;
 }
 
-.tocando .play {
-  display: none;
+#volume-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 5px;
+    background: #444;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
 }
 
-.tocando .pause {
-  display: block;
-}
-
-#container-botoes {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
+#volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #1DB954;
+    border-radius: 50%;
+    cursor: pointer;
 }
